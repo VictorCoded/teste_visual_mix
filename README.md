@@ -225,5 +225,5 @@
 
 <div>
  <h2>🎓 Autores</h2>
- <h3>Feito com 💜 by <a href="https://github.com/johnatanSO" target="_blank">Johnatan Santos</a></h3>
+ <h3>Feito com 💜 by <a href="https://github.com/VictorCoded" target="_blank">Victor Henrique</a></h3>
 </div>
