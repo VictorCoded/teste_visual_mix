@@ -1,17 +1,36 @@
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
 
-const MONGO_USERNAME = 'johnatanSO'
-const MONGO_PASSWORD = 'u72E1K8bxPcVgFhM'
-const mongoURL = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@clusterreactnative0.ct2fmit.mongodb.net/?retryWrites=true&w=majority`
+dotenv.config()
 
+const mongoURL = process.env.MONGODB_URL || 'mongodb+srv://vhenriquecarvalho10:GMx1fdWohQxo2DJD@adega.ogcyd9c.mongodb.net/adega?retryWrites=true&w=majority&appName=adega'
+
+// Configurações do Mongoose
+mongoose.set('strictQuery', true)
+
+// Conecta com opções recomendadas
 mongoose.connect(mongoURL)
-mongoose.connection
-  .on(
-    'error',
-    console.error.bind(console, 'Erro ao conectar com o banco de dados'),
-  )
-  .once('open', () => {
-    console.log('Conexão com o banco de dados estabelecida com sucesso')
+  .then(() => {
+    console.log('✅ Conexão com o MongoDB estabelecida com sucesso')
   })
+  .catch((error) => {
+    console.error('❌ Erro ao conectar com o MongoDB:', error)
+    process.exit(1) // Encerra a aplicação em caso de erro de conexão
+  })
+
+// Eventos de conexão
+mongoose.connection.on('error', (error) => {
+  console.error('❌ Erro na conexão com o MongoDB:', error)
+})
+
+mongoose.connection.on('disconnected', () => {
+  console.warn('⚠️ Desconectado do MongoDB')
+})
+
+process.on('SIGINT', async () => {
+  await mongoose.connection.close()
+  console.log('✅ Conexão com o MongoDB fechada')
+  process.exit(0)
+})
 
 export default mongoose
