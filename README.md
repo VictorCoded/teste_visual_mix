@@ -70,7 +70,7 @@
 <h3>Entre com o seguinte link: </h3>
 <a href="https://sistema-de-vendas-lac.vercel.app">https://sistema-de-vendas-lac.vercel.app</a>
 <h3>Ou</h3>
-<li> Clone o repositório com: git clone https://github.com/johnatanSO/sistema-de-vendas.git"
+<li> Clone o repositório com: git clone https://github.com/VictorCoded/teste_visual_mix.git"
 <li> Entre em uma IDE de sua preferência 
 <li> Execute o servidor na pasta back-end e depois o front-end
 <li> Crie uma nova conta
